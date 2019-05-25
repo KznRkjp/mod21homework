@@ -19,7 +19,7 @@
       <li>
         <input class='checkbox' data-uid={{ url.job }} type='checkbox' />
       {% endif %}
-        {{ url }}
+        {{ url }} {{url.job}}
         <a class="remove" href="/api/delete/{{ url.job }}">X</a>
         <hr/>
       </li>
