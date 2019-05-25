@@ -7,9 +7,9 @@ def index(request):
 
 
 def url_list(request):
-    all_tasks = Url.objects.all()
+    all_urls = Url.objects.all()
     return render(
         request,
         'urls/list.html',
-        #{'urls': all_urls}
+        {'urls': all_urls}
     )

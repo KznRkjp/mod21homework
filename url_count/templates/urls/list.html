@@ -1,1 +1,31 @@
-<h1>O hi</h1>
+{% load static %}
+<html>
+  <head>
+    <title>Список URL</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+  <div class="container">
+    <h1>Текущие задачи</h1>
+    <ul id="url-list">
+    {% for url in urls %}
+      {% if url.status %}
+      <li class="completed">
+        <input class='checkbox' data-uid={{ url.job }} type='checkbox' disabled='disabled' checked='checked'/>
+      {% else %}
+      <li>
+        <input class='checkbox' data-uid={{ url.job }} type='checkbox' />
+      {% endif %}
+        {{ task }}
+        <a class="remove" href="/api/delete/{{ url.job }}">X</a>
+        <hr/>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  </body>
+
+</html>
