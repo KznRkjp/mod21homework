@@ -1,7 +1,7 @@
 from django.db import models
 
 class Url(models.Model):
-    job = models.UUIDField()
+    job = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     date = models.DateTimeField(auto_now_add=True)
     url_link = models.CharField(max_length=128)
     word = models.CharField(max_length=64)
