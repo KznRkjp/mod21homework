@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from tasks.models import TodoItem
+from url_count.models import Url
 
 def index(request):
     return HttpResponse("Примитивный ответ из приложения tasks")
