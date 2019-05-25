@@ -9,7 +9,7 @@
   </head>
   <body>
   <div class="container">
-    <h1>Текущие задачи</h1>
+    <h1>Список URL</h1>
     <ul id="url-list">
     {% for url in urls %}
       {% if url.status %}
@@ -19,7 +19,7 @@
       <li>
         <input class='checkbox' data-uid={{ url.job }} type='checkbox' />
       {% endif %}
-        {{ task }}
+        {{ url }}
         <a class="remove" href="/api/delete/{{ url.job }}">X</a>
         <hr/>
       </li>
