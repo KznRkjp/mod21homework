@@ -13,3 +13,7 @@ def url_list(request):
         'urls/list.html',
         {'urls': all_urls}
     )
+
+
+def url_create(request):
+    return render(request, "urls/create.html")
