@@ -19,10 +19,13 @@ def url_list(request):
 def url_create(request):
     return render(request, "urls/create.html")
 
+# def add_url(request):
+#     if request.method == "POST":
+#         link = request.POST["URL"]
+#         search = request.POST["Search_string"]
+#         t = Url(url_link=link,word=search)
+#         t.save()
+#     return redirect("/url_count/list/")
 def add_url(request):
-    if request.method == "POST":
-        link = request.POST["URL"]
-        search = request.POST["Search_string"]
-        t = Url(url_link=link,word=search)
-        t.save()
-    return redirect("/url_count/list/")
+    form = AddUrlForm()
+    return render(request, "urls/create.html", {"form": form})
