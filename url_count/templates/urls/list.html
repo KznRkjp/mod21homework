@@ -1,14 +1,10 @@
+{% extends "urls/base.html" %}
 {% load static %}
-<html>
-  <head>
-    <title>Список URL</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-  </head>
-  <body>
-  <div class="container">
+{% block title %}URL List{% endblock %}
+
+{% block main_content %}
+
     <h1>Список URL</h1>
     <ul id="url-list">
     {% for url in urls %}
@@ -25,7 +21,5 @@
       </li>
     {% endfor %}
     </ul>
-  </div>
-  </body>
 
-</html>
+{% endblock %}

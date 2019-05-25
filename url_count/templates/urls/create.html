@@ -1,21 +1,13 @@
-{% load static %}
-<html>
-  <head>
-    <title>Создать задачу</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% extends "urls/base.html" %}
 
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+{% block title %}Создать задачу{% endblock %}
 
-  </head>
-  <body>
-  <div class="container">
+{% block main_content %}
+
     <h1>Создать задачу</h1>
     <form action="/add-url" method="post">
         <input type="URLField" name="URL" class="form-control"/>
         <input type="CharField" name="Search string" class="form-control"/>
         <button class="add" type="submit">+</button>
     </form>
-  </div>
-  </body>
-
-</html>
+{% endblock %}
