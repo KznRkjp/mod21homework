@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 class Url(models.Model):
     job = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
