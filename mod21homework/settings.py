@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'url_count.apps.Url_countConfig',
+    'url_count.apps.UrlCountConfig',
 ]
 
 MIDDLEWARE = [
