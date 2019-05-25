@@ -25,4 +25,4 @@ def add_url(request):
         search = request.POST["Search_string"]
         t = Url(url_link=link,word=search)
         t.save()
-    return redirect("/urls/list/")
+    return redirect("/url_count/list/")
