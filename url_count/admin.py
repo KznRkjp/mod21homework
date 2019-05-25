@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tasks.models import Url
+from url_count.models import Url
 
 admin.site.register(Url)
 # Register your models here.
