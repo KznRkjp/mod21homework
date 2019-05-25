@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from url_count.models import Url
 from django.shortcuts import redirect
-
+from url_count.forms import AddUrlForm
 def index(request):
     return HttpResponse("Примитивный ответ из приложения tasks")
 
