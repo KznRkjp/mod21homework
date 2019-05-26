@@ -36,10 +36,10 @@
       {% for url in urls %}
     <div class="row">
         <div class="col-sm">{{url.date}}</div>
-        <div class="col-lg">{url}</div>
-        <div class="col-sm">{url.word}</div>
+        <div class="col-lg">{{url}}</div>
+        <div class="col-sm">{{url.word}}</div>
         {% if url.status %}
-          <div class="col-sm">{url.result}</div>
+          <div class="col-sm">{{url.result}}</div>
           <div class="col-sm">+</div>
         {% else %}
           <div class="col-sm">-</div>
@@ -47,7 +47,7 @@
         {% endif %}
     </div>
     <div class="row">
-    <div class="col">{url.job}</div>
+    <div class="col">{{url.job}}</div>
     </div>
       <hr/>
 
