@@ -13,6 +13,7 @@ def url_list(request):
         request,
         'urls/list.html',
         {'urls': all_urls}
+        {"form": form}
     )
 
 
