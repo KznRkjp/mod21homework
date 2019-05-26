@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.core.management import BaseCommand
 from datetime import datetime
+from django.utils import timezone
 from url_count.models import Url
 
 class Command(BaseCommand):
