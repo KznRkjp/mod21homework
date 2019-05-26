@@ -27,8 +27,8 @@ def url_list(request):
     )
 
 
-# def url_create(request):
-#     return render(request, "urls/create.html")
+def url_create(request):
+    return render(request, "urls/create.html")
 
 # def add_url(request):
 #     if request.method == "POST":
