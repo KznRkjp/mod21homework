@@ -15,6 +15,7 @@ class Command(BaseCommand):
         for t in Url.objects.filter(status=False):
             count = 0
             resp = requests.get(t.url_link)
+            print (resp)
             for i in resp.text.split():
                 if i == t.word:
                     count += 1
