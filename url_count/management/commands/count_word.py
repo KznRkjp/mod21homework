@@ -14,4 +14,4 @@ class Command(BaseCommand):
         now = datetime.now(timezone.utc)
         for t in Url.objects.filter(status=False):
             if (now - t.date).days >= options['warn_days']:
-                print("Старая задача:", t, t.created)
+                print("Старая задача:", t, t.date)
