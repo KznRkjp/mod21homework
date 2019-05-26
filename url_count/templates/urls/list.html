@@ -25,7 +25,13 @@
 </div>
 <div class="container">
   <h1>Список URL</h1>
-    
+  <div class="row">
+    <div class="col-1">Дата добавления</div>
+    <div class="col-2">URL</div>
+    <div class="col-1">Слово для подсчета</div>
+    <div class="col-1">Частота</div>
+    <div class="col-1">Статус</div>
+  </div>
     <ul id="url-list">
     {% for url in urls %}
       {% if url.status %}
