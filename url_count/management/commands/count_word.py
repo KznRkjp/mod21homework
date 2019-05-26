@@ -23,7 +23,7 @@ class Command(BaseCommand):
             t.result = count
             t.last_update = datetime.now(timezone.utc)
             t.save()
-            print(count)
+            print(t.url_link,t.word,t.result,t.last_update)
 
 
 
