@@ -12,7 +12,7 @@ def url_list(request):
     return render(
         request,
         'urls/list.html',
-        {'urls': all_urls}
+        {'urls': all_urls},
         {"form": form}
     )
 
