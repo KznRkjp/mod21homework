@@ -35,7 +35,7 @@ def add_url(request):
             word = cd['word']
             t = Url(url_link=url_link,word=word)
             t.save()
-            return redirect("/urls/list")
+            return redirect("/url_count/list")
     else:
         form = AddUrlForm()
 
