@@ -13,19 +13,23 @@ form {
   margin-top: 5%;
   border: 3px solid #3b3b3b;
 }
-/*
+
 input[type="text"] {
-  outline: 0;
+  display: block;
+  /*outline: 0;
   width: 55%;
   height: 32px;
   border: none;
   font-size: 18px;
   font-weight: normal;
   padding-left: 10px;
+*/
 }
+
+/*
+label {display: block;}
 */
 
-label {display: block;}
 .add {
   outline: 0;
 
