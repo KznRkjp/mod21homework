@@ -20,7 +20,7 @@ class Command(BaseCommand):
                     count += 1
             t.status = True
             t.result = count
-            t.save
+            t.save()
             print(count)
 
 
