@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for t in Url.objects.filter(status=False):
-            resp = requests.get(t.url)
+            resp = requests.get(t.url_link)
             count = 0
             for i in resp.text.split():
                 if i == t.word:
