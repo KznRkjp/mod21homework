@@ -39,4 +39,4 @@ def add_url(request):
     else:
         form = AddUrlForm()
 
-    return render(request, "urls/create.html", {"form": form})
+    return render(request, "urls/list.html", {"form": form})
