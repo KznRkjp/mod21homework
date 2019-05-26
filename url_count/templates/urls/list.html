@@ -4,7 +4,12 @@
 {% block title %}URL List{% endblock %}
 
 {% block main_content %}
-
+<h1>Создать задачу</h1>
+<form action="." method="post">
+{{ form }}
+{% csrf_token %}
+<button class="add" type="submit">+</button>
+</form>
     <h1>Список URL</h1>
     <ul id="url-list">
     {% for url in urls %}
