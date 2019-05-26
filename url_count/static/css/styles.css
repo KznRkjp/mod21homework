@@ -6,14 +6,14 @@
   color: #3b3b3b;
   font-weight: bold;
 }
-/*
+
 form {
   outline: 0;
   height: 36px;
   margin-top: 5%;
   border: 3px solid #3b3b3b;
 }
-*/
+/*
 input[type="text"] {
   outline: 0;
   width: 55%;
@@ -23,7 +23,7 @@ input[type="text"] {
   font-weight: normal;
   padding-left: 10px;
 }
-
+*/
 .add {
   outline: 0;
 
