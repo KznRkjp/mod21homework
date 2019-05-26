@@ -10,9 +10,13 @@
 <h1>Создать задачу</h1>
 </div>
 </div>
+<div class="row">
+<div class="col">
 <form action="." method="post">
 {{ form }}
 {% csrf_token %}
+</div>
+</div>
 <div class="row">
 <div class="col">
 <button class="add" type="submit">+</button>
