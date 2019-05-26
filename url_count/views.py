@@ -31,8 +31,9 @@ def add_url(request):
         form = AddUrlForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            desc = cd["description"]
-            t = Url(description=desc)
+            url_link = cd["url_link"]
+            word = cd['word']
+            t = Url(url_link=url_link,word=word)
             t.save()
             return redirect("/urls/list")
     else:
