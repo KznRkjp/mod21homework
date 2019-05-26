@@ -3,6 +3,7 @@ from django.core.management import BaseCommand
 from datetime import datetime
 from django.utils import timezone
 from url_count.models import Url
+import requests
 
 class Command(BaseCommand):
     help = u"Display not yet completed tasks' dates"
@@ -11,7 +12,16 @@ class Command(BaseCommand):
         parser.add_argument('--warning-days', dest='warn_days', type=int, default=1)
 
     def handle(self, *args, **options):
-        now = datetime.now(timezone.utc)
         for t in Url.objects.filter(status=False):
-            if (now - t.date).days >= options['warn_days']:
-                print("Старая задача:", t, t.date)
+            resp = requests.get(t.url)
+            count = 0
+            for i in resp.text.split():
+                if i == t.word:
+                    count += 1
+        print(count)
+
+
+        # now = datetime.now(timezone.utc)
+        # for t in Url.objects.filter(status=False):
+        #     if (now - t.date).days >= options['warn_days']:
+        #         print("Старая задача:", t, t.date)
