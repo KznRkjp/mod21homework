@@ -6,10 +6,10 @@ from url_count.models import Url
 import requests
 
 class Command(BaseCommand):
-    help = u"Display not yet completed tasks' dates"
+    help = u"Count how many times a word is found in the URL"
 
-    def add_arguments(self, parser):
-        parser.add_argument('--warning-days', dest='warn_days', type=int, default=1)
+    #def add_arguments(self, parser):
+    #    parser.add_argument('--warning-days', dest='warn_days', type=int, default=1)
 
     def handle(self, *args, **options):
         for t in Url.objects.filter(status=False):
@@ -21,6 +21,7 @@ class Command(BaseCommand):
                     count += 1
             t.status = True
             t.result = count
+            t.last_update = datetime.now(timezone.utc)
             t.save()
             print(count)
 
