@@ -13,12 +13,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for t in Url.objects.filter(status=False):
-            resp = requests.get(t.url_link)
             count = 0
+            resp = requests.get(t.url_link)
             for i in resp.text.split():
                 if i == t.word:
                     count += 1
-        print(count)
+            print(count)
+        
 
 
         # now = datetime.now(timezone.utc)
