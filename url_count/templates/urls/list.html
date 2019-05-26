@@ -32,20 +32,25 @@
     <div class="col-sm">Частота</div>
     <div class="col-sm">Статус</div>
   </div>
-    <ul id="url-list">
-    {% for url in urls %}
-      {% if url.status %}
-      <li class="completed">
-        <input class='checkbox' data-uid={{ url.job }} type='checkbox' disabled='disabled' checked='checked'/>
-      {% else %}
-      <li>
-        <input class='checkbox' data-uid={{ url.job }} type='checkbox' />
-      {% endif %}
-        {{ url }} {{url.job}}
-        <a class="remove" href="/api/delete/{{ url.job }}">X</a>
-        <hr/>
-      </li>
-    {% endfor %}
-    </ul>
+    <div class="row">
+      {% for url in urls %}
+        <div class="col-sm">url.date</div>
+        <div class="col-lg">url</div>
+        <div class="col-sm">url.word</div>
+        {% if url.status %}
+          <div class="col-sm">url.result</div>
+          <div class="col-sm">+</div>
+        {% else %}
+          <div class="col-sm">-</div>
+          <div class="col-sm">-</div>
+        {% endif %}
+    </div>
+    <div class="row">
+    <div class="col">url.job</div>
+    </div>
+      <hr/>
+
+      {% endfor %}
+
 </div>
 {% endblock %}
