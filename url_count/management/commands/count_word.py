@@ -18,8 +18,11 @@ class Command(BaseCommand):
             for i in resp.text.split():
                 if i == t.word:
                     count += 1
+            t.status = True
+            t.result = count
+            t.save
             print(count)
-        
+
 
 
         # now = datetime.now(timezone.utc)
