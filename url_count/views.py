@@ -27,8 +27,8 @@ def url_list(request):
     )
 
 
-def url_create(request):
-    return render(request, "urls/create.html")
+# def url_create(request):
+#     return render(request, "urls/create.html")
 
 # def add_url(request):
 #     if request.method == "POST":
@@ -37,17 +37,17 @@ def url_create(request):
 #         t = Url(url_link=link,word=search)
 #         t.save()
 #     return redirect("/url_count/list/")
-def add_url(request):
-    if request.method == "POST":
-        form = AddUrlForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            url_link = cd["url_link"]
-            word = cd['word']
-            t = Url(url_link=url_link,word=word)
-            t.save()
-            return redirect("/url_count/list/")
-    else:
-        form = AddUrlForm()
-
-    return render(request, "urls/list.html", {"form": form})
+# def add_url(request):
+#     if request.method == "POST":
+#         form = AddUrlForm(request.POST)
+#         if form.is_valid():
+#             cd = form.cleaned_data
+#             url_link = cd["url_link"]
+#             word = cd['word']
+#             t = Url(url_link=url_link,word=word)
+#             t.save()
+#             return redirect("/url_count/list/")
+#     else:
+#         form = AddUrlForm()
+#
+#     return render(request, "urls/list.html", {"form": form})
