@@ -27,5 +27,15 @@ def url_create(request):
 #         t.save()
 #     return redirect("/url_count/list/")
 def add_url(request):
-    form = AddUrlForm()
-    return render(request, "urls/create.html", {"form": form})
+    if request.method == "POST":
+        form = AddUrlForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            desc = cd["description"]
+            t = Url(description=desc)
+            t.save()
+            return redirect("/urls/list")
+    else:
+        form = AddUrlForm()
+
+    return render(request, "url_count/create.html", {"form": form})
