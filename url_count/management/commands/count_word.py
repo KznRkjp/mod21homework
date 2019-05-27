@@ -23,7 +23,7 @@ def check_url(url_link):
             while path.endswith('/'):
                 path = path[:-1]
             path = "http://"+path
-            validate(path)
+            #validate(path)
             url_link = path
         else:
             url_link = "bad URL"
