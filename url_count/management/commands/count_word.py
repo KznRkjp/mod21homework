@@ -20,7 +20,7 @@ class Command(BaseCommand):
             count = 0
             validate = URLValidator(schemes=('http', 'https'))
             validate(url)
-            except ValidationError:
+        except ValidationError as e:
                 t.status = True
                 t.result = "bad URL"
                 t.last_update = datetime.now(timezone.utc)
