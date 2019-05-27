@@ -15,8 +15,9 @@ import test_func
 
 class Command(BaseCommand):
     help = u"Count how many times a word is found in the URL"
-    job_list=[]
+
     def handle(self, *args, **options):
+        job_list=[]
         redis_conn=Redis() #подключаем Редис
         q = Queue(connection=redis_conn) # и очередь
 
