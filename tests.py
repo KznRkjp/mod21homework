@@ -15,8 +15,13 @@ reddis_conn=Redis()
 q = Queue(connection=Redis())
 for url in urls:
     job = q.enqueue(count_words_at_url, url)
+    while job.result is None:
+        time.sleep(1)
 
-while job.result is None:
-    time.sleep(1)
+    print(job.result)
 
-print(job.result)
+
+#while job.result is None:
+#    time.sleep(1)
+
+#print(job.result)
