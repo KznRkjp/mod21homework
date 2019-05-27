@@ -1,0 +1,62 @@
+{% extends "urls/base.html" %}
+{% load static %}
+
+{% block title %}URL List{% endblock %}
+
+{% block main_content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Создать задачу</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form action="." method="post">
+        {{ form }}
+        {% csrf_token %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="add" type="submit">+</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h1>Список URL</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Дата добавления</th>
+        <th scope="col">URL</th>
+        <th scope="col">Слово для подсчета</th>
+        <th scope="col">Частота</th>
+        <th scope="col">Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for url in urls %}
+
+        <td>{{url.date}}</td>
+        <td>{{url}}</td>
+        <td>{{url.word}}</td>
+        {% if url.status %}
+          <td>{{url.result}}</td>
+          <td>+</td>
+        {% else %}
+          <td>-</td>
+          <td>-</td>
+        {% endif %}
+
+    </tbody>
+  <!--  <div class="row">
+    <div class="col">{{url.job}}</div>
+ -->
+    </div>
+
+
+      {% endfor %}
+
+</div>
+{% endblock %}
