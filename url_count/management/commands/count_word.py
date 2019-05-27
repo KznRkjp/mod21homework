@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 job = q.fetch_job(task)
                 while job.result is None:
                     time.sleep(1)
-                obj = Class.objects.get(id=task)
+                obj = Url.objects.get(id=task)
                 obj.result = job.result
                 obj.status = True
                 obj.last_update = datetime.now(timezone.utc)
