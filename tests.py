@@ -1,5 +1,6 @@
 import time
-
+import sys
+sys.path.append("/home/pi/skillfactory/mod21/mod21homework")
 from rq import Queue
 from redis import Redis
 import test_func
