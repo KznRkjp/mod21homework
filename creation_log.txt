@@ -1,0 +1,8 @@
+1. Server
+2. Nginx
+3. Postgresql
+4. Django
+5. guinicorn
+6. Работаем с джанго:
+  а. РАСШИРЯЕМ ПРОЕКТ СВОИМИ ПРИЛОЖЕНИЯМИ
+  б. python manage.py startapp url_count  (делаем приложение url_count)
