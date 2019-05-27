@@ -16,7 +16,7 @@ def check_url(url_link):
     try:
         validate(url_link)
     except: #если не ок - пробуем подставить http://
-        o = urlparse(t.url_link)
+        o = urlparse(url_link)
         if o.path:
             path = o.path
             while path.endswith('/'):
