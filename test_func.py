@@ -8,6 +8,6 @@ def count_words_at_url(url,word):
             for i in resp.text.split():
                 if i.lower() == word.lower():
                     count+=1
-                return count
+            return count
     except requests.ConnectionError:
         return -1
