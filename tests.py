@@ -6,7 +6,7 @@ from redis import Redis
 import test_func
 
 urls = ["http://mail.ru","http://yandex.ru","http://google.com"]
-
+test_func.count_words_at_url("http://mail.ru")
 
 redis_conn=Redis()
 q = Queue(connection=redis_conn)
