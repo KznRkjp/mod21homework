@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 continue
             elif check_url_result != t.url_link:
                 t.url_link = check_url_result
-                t.save
+                t.save()
 
             job_list.append(str(t.job))
             jobs = q.enqueue(test_func.count_words_at_url,(t.url_link,t.word,),job_id=str(t.job))
