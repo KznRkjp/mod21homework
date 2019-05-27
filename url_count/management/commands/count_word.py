@@ -32,7 +32,7 @@ class Command(BaseCommand):
             elif check_url != t.url_link:
                 t.url_link = check_url
                 t.save
-'
+
             job_list.append(t.job)
             jobs = q.enqueue(test_func.count_words_at_url,
                             args=(t.url_link,t.word,),
