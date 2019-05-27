@@ -10,6 +10,7 @@ from redis import Redis
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 import test_func
+import time
 
 def check_url(url_link):
     validate = URLValidator(schemes=('http', 'https'))
