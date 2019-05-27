@@ -25,7 +25,7 @@ class Command(BaseCommand):
             try:
                 validate(t.url_link)
             except:
-                o = urlparse.urlparse(t.url_link)
+                o = urlparse(t.url_link)
                 if o.path:
                     path = o.path
                     while path.endswith('/'):
