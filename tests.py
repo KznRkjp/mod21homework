@@ -17,7 +17,7 @@ for url in urls:
 for job1 in q.jobs:
     while job1.result is None:
         time.sleep(1)
-    print(job1.result)
+    print(job1.id, job1.result)
 
 
 
