@@ -13,10 +13,12 @@ q = Queue(connection=redis_conn)
 print("*"*85)
 for url in urls:
     job = q.enqueue(test_func.count_words_at_url, url)
-while job.result is None:
-    time.sleep(1)
 
-print(job.result)
+for job1 in q.jobs:
+    while job1.result is None:
+        time.sleep(1)
+    print(job1.result)
+
 
 
 #while job.result is None:
