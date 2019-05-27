@@ -4,6 +4,8 @@ from datetime import datetime
 from django.utils import timezone
 from url_count.models import Url
 import requests
+from rq import Queue
+from redis import Redis
 
 class Command(BaseCommand):
     help = u"Count how many times a word is found in the URL"
