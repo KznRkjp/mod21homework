@@ -6,6 +6,8 @@ from url_count.models import Url
 import requests
 from rq import Queue
 from redis import Redis
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 
 class Command(BaseCommand):
     help = u"Count how many times a word is found in the URL"
