@@ -36,8 +36,7 @@ class Command(BaseCommand):
             job_list.append(t.job)
             jobs = q.enqueue(test_func.count_words_at_url,
                             args=(t.url_link,t.word,),
-                            kwargs={
-                                'job_id'=t.job
+                            kwargs={'job_id'=t.job,
                             })
         while len(job_list)>0:
             for task in job_list:
