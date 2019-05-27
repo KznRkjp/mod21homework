@@ -21,7 +21,11 @@ class Command(BaseCommand):
             validate = URLValidator(schemes=('http', 'https'))
             validate(url)
             except ValidationError:
-                raise BadRequest('Not a valid URL')
+                t.status = True
+                t.result = "bad URL"
+                t.last_update = datetime.now(timezone.utc)
+                t.save()
+                continue
             resp = requests.get(t.url_link)
             #print (resp.text)
             for i in resp.text.split():
