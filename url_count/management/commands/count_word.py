@@ -51,10 +51,3 @@ class Command(BaseCommand):
             t.last_update = datetime.now(timezone.utc)
             t.save()
             print(t.url_link,t.word,t.result,t.last_update)
-
-
-
-        # now = datetime.now(timezone.utc)
-        # for t in Url.objects.filter(status=False):
-        #     if (now - t.date).days >= options['warn_days']:
-        #         print("Старая задача:", t, t.date)
