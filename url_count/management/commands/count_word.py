@@ -3,7 +3,7 @@ from django.core.management import BaseCommand
 from datetime import datetime
 from django.utils import timezone
 from url_count.models import Url
-import requests
+import requests, urlparse
 from rq import Queue
 from redis import Redis
 from django.core.validators import URLValidator
