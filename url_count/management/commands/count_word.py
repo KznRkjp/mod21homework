@@ -18,13 +18,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for t in Url.objects.filter(status=False):
-
-            count = 0
-
+            count = 0 #счетчик вхождения слова
+#Проверяем URL
             validate = URLValidator(schemes=('http', 'https'))
             try:
-                validate(t.url_link)
-            except:
+                validate(t.url_link) #если все ок идем дальше
+            except: #если не ок - пробуем подставить http://
                 o = urlparse(t.url_link)
                 if o.path:
                     path = o.path
@@ -34,7 +33,7 @@ class Command(BaseCommand):
                     validate(path)
                     t.url_link = path
                     t.save
-                else:
+                else: #если при подстановке http:// ссылка не проходит проверку то записываем результат bad URL и переходим к следующей записи
                     t.status = True
                     t.result = "bad URL"
                     t.last_update = datetime.now(timezone.utc)
@@ -42,10 +41,10 @@ class Command(BaseCommand):
                     continue
 
 
-            resp = requests.get(t.url_link)
+            resp = requests.get(t.url_link) #грузим страницу
             #print (resp.text)
             for i in resp.text.split():
-                if i == t.word:
+                if i.lower() == t.word.lower():
                     count += 1
             t.status = True
             t.result = count
