@@ -56,13 +56,19 @@ class Command(BaseCommand):
 
             job_list.append(str(t.job))
             jobs = q.enqueue(test_func.count_words_at_url,t.url_link,t.word,job_id=str(t.job))
+
         while len(job_list)>0:
             for task in job_list:
                 job = q.fetch_job(task)
                 while job.result is None:
                     time.sleep(1)
                 obj = Url.objects.get(job=task)
-                obj.result = job.result
+
+                if job.result == -1:
+                    obj.result = "URL unreachable"
+                else:
+                    obj.result = job.result
+
                 obj.status = True
                 obj.last_update = datetime.now(timezone.utc)
                 obj.save()
