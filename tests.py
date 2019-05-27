@@ -12,7 +12,8 @@ urls = ["http://mail.ru","http://yandex.ru","http://google.com"]
 
 
 reddis_conn=Redis()
-q = Queue(connection=Redis())
+q = Queue(connection=redis_conn)
+print("*"85)
 for url in urls:
     job = q.enqueue(count_words_at_url, url)
     while job.result is None:
