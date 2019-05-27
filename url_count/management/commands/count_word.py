@@ -17,16 +17,30 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for t in Url.objects.filter(status=False):
+
             count = 0
+
             validate = URLValidator(schemes=('http', 'https'))
             try:
                 validate(t.url_link)
-            except ValidationError as e:
-                t.status = True
-                t.result = "bad URL"
-                t.last_update = datetime.now(timezone.utc)
-                t.save()
-                continue
+            except:
+                o = urlparse.urlparse(t.url_link)
+                if o.path:
+                    path = o.path
+                    while path.endswith('/'):
+                        path = path[:-1]
+                    path = "http://"+path
+                    validate(path)
+                    t.url_link = path
+                    t.save
+                else:
+                    t.status = True
+                    t.result = "bad URL"
+                    t.last_update = datetime.now(timezone.utc)
+                    t.save()
+                    continue
+
+
             resp = requests.get(t.url_link)
             #print (resp.text)
             for i in resp.text.split():
