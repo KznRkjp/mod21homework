@@ -2,11 +2,7 @@ import time
 
 from rq import Queue
 from redis import Redis
-import requests
-
-def count_words_at_url(url):
-    resp = requests.get(url)
-    return len(resp.text.split())
+from test_func import count_words_at_url
 
 urls = ["http://mail.ru","http://yandex.ru","http://google.com"]
 
