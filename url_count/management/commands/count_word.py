@@ -21,9 +21,7 @@ class Command(BaseCommand):
         q = Queue(connection=redis_conn) # и очередь
 
         for t in Url.objects.filter(status=False):
-'''
-Проверяем URL
-'''
+
             check_url = check_url(t.url_link)
             if check_url == "bad URL":
                 t.status = True
@@ -34,10 +32,8 @@ class Command(BaseCommand):
             elif check_url != t.url_link:
                 t.url_link = check_url
                 t.save
-
-'''
-Если URL OK - Добавляем задание в очередь
-'''         job_list.append(t.job)
+'
+            job_list.append(t.job)
             jobs = q.enqueue(test_func.count_words_at_url,
                             args=(t.url_link,t.word,),
                             kwargs={
