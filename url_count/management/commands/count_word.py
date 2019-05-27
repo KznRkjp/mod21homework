@@ -19,8 +19,9 @@ class Command(BaseCommand):
         for t in Url.objects.filter(status=False):
             count = 0
             validate = URLValidator(schemes=('http', 'https'))
-            validate(url)
-        except ValidationError as e:
+            try:
+                validate(url)
+            except ValidationError as e:
                 t.status = True
                 t.result = "bad URL"
                 t.last_update = datetime.now(timezone.utc)
