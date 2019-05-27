@@ -6,3 +6,4 @@
 6. Работаем с джанго:
   а. РАСШИРЯЕМ ПРОЕКТ СВОИМИ ПРИЛОЖЕНИЯМИ
   б. python manage.py startapp url_count  (делаем приложение url_count)
+  fdfd 
