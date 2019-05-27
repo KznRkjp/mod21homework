@@ -18,6 +18,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for t in Url.objects.filter(status=False):
             count = 0
+            validate = URLValidator(schemes=('http', 'https'))
+            validate(url)
+            except ValidationError:
+                raise BadRequest('Not a valid URL')
             resp = requests.get(t.url_link)
             #print (resp.text)
             for i in resp.text.split():
