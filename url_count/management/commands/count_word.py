@@ -11,7 +11,22 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 import test_func
 
-
+def check_url(url_link):
+    validate = URLValidator(schemes=('http', 'https'))
+    try:
+        validate(url_link)
+    except: #если не ок - пробуем подставить http://
+        o = urlparse(t.url_link)
+        if o.path:
+            path = o.path
+            while path.endswith('/'):
+                path = path[:-1]
+            path = "http://"+path
+            validate(path)
+            url_link = path
+        else:
+            url_link = "bad URL"
+    return url_link
 
 class Command(BaseCommand):
     help = u"Count how many times a word is found in the URL"
@@ -47,23 +62,3 @@ class Command(BaseCommand):
                 obj.last_update = datetime.now(timezone.utc)
                 obj.save()
                 job_list.remove(task)
-
-
-
-
-def check_url(url_link):
-    validate = URLValidator(schemes=('http', 'https'))
-    try:
-        validate(url_link)
-    except: #если не ок - пробуем подставить http://
-        o = urlparse(t.url_link)
-        if o.path:
-            path = o.path
-            while path.endswith('/'):
-                path = path[:-1]
-            path = "http://"+path
-            validate(path)
-            url_link = path
-        else:
-            url_link = "bad URL"
-    return url_link
