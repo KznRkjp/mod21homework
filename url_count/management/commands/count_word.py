@@ -38,15 +38,15 @@ class Command(BaseCommand):
 
         for t in Url.objects.filter(status=False):
 
-            check_url = check_url(t.url_link)
-            if check_url == "bad URL":
+            check_url_result = check_url(t.url_link)
+            if check_url_result == "bad URL":
                 t.status = True
                 t.result = "bad URL"
                 t.last_update = datetime.now(timezone.utc)
                 t.save()
                 continue
-            elif check_url != t.url_link:
-                t.url_link = check_url
+            elif check_url_result != t.url_link:
+                t.url_link = check_url_result
                 t.save
 
             job_list.append(t.job)
