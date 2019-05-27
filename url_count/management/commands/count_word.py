@@ -20,7 +20,7 @@ class Command(BaseCommand):
             count = 0
             validate = URLValidator(schemes=('http', 'https'))
             try:
-                validate(url)
+                validate(t.url_link)
             except ValidationError as e:
                 t.status = True
                 t.result = "bad URL"
