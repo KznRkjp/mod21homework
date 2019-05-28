@@ -67,7 +67,7 @@ class Command(BaseCommand):
                     time.sleep(1)
                     count_time+=1
                     print(count_time)
-                    if count_time == 15:
+                    if count_time > 15:
                         print("error")
                         obj = Url.objects.get(job=task)
                         obj.result = "Something went wrong"
