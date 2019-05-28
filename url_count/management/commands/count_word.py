@@ -58,9 +58,9 @@ class Command(BaseCommand):
             jobs = q.enqueue(test_func.count_words_at_url,t.url_link,t.word,job_id=str(t.job))
 
         while len(job_list)>0:
-            print(len(job_list))
+            print("длина списка:",len(job_list))
             for task in job_list:
-                print(task)
+                print("Задание:",task)
                 job = q.fetch_job(task)
                 count_time=0
                 while job.result is None:
@@ -68,6 +68,7 @@ class Command(BaseCommand):
                     count_time+=1
                     print(count_time)
                     if count_time == 15:
+                        print("error")
                         obj = Url.objects.get(job=task)
                         obj.result = "Something went wrong"
                         obj.status = True
