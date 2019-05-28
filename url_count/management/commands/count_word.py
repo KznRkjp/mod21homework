@@ -89,4 +89,5 @@ class Command(BaseCommand):
                 obj.status = True
                 obj.last_update = datetime.now(timezone.utc)
                 obj.save()
-                job_list.remove(str(task))
+                if str(task) in job_list:
+                    job_list.remove(str(task))
