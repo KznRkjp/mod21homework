@@ -60,8 +60,17 @@ class Command(BaseCommand):
         while len(job_list)>0:
             for task in job_list:
                 job = q.fetch_job(task)
+                count_time=0
                 while job.result is None:
                     time.sleep(1)
+                    count_time+=1
+                    if count_time == 15:
+                        obj.result = "URL unreachable"
+                        obj.status = True
+                        obj.last_update = datetime.now(timezone.utc)
+                        obj.save()
+                        job_list.remove(task)
+                        continue
                 obj = Url.objects.get(job=task)
 
                 if job.result == -1:
