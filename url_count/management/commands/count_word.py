@@ -74,7 +74,8 @@ class Command(BaseCommand):
                         obj.status = True
                         obj.last_update = datetime.now(timezone.utc)
                         obj.save()
-                        job_list.remove(task)
+                        if task in job_list:
+                            job_list.remove(task)
                         continue
                 obj = Url.objects.get(job=task)
 
