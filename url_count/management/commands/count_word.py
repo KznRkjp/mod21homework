@@ -65,6 +65,7 @@ class Command(BaseCommand):
                     time.sleep(1)
                     count_time+=1
                     if count_time == 15:
+                        obj = Url.objects.get(job=task)
                         obj.result = "URL unreachable"
                         obj.status = True
                         obj.last_update = datetime.now(timezone.utc)
