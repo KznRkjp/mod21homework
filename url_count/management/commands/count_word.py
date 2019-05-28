@@ -58,43 +58,43 @@ class Command(BaseCommand):
             jobs = q.enqueue(test_func.count_words_at_url,t.url_link,t.word,job_id=str(t.job))
 
         while len(job_list)>0:
-            print("длина списка:",len(job_list))
+            #print("длина списка:",len(job_list))
             for task in job_list:
-                print("Задание:",task)
+                #print("Задание:",task)
                 job = q.fetch_job(task)
                 count_time=0
                 while job.result is None:
                     time.sleep(1)
                     count_time+=1
-                    print(count_time)
+                    #print(count_time)
                     if count_time > 15:
-                        print("error")
+                        #print("error")
                         obj = Url.objects.get(job=task)
                         obj.result = "Something went wrong"
                         obj.status = True
                         obj.last_update = datetime.now(timezone.utc)
                         obj.save()
-                        print (job_list)
-                        print (task)
+                        #print (job_list)
+                        #print (task)
                         if str(task) in job_list:
                             job_list.remove(str(task))
                         break
-                print("выход из while")
+                #print("выход из while")
                 obj = Url.objects.get(job=task)
-                print (obj)
+                #print (obj)
                 if job.result == -1:
                     obj.result = "URL unreachable"
-                    print ("1")
+                    #print ("1")
                 elif obj.result == "Something went wrong":
                     obj.result = "Something went wrong"
-                    print("2")
+                    #print("2")
                 else:
                     obj.result = job.result
-                    print ("3")
+                    #print ("3")
 
                 obj.status = True
                 obj.last_update = datetime.now(timezone.utc)
-                print ("pre-save")
+                #print ("pre-save")
                 obj.save()
                 if str(task) in job_list:
                     job_list.remove(str(task))
