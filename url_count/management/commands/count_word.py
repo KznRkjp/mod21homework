@@ -79,15 +79,22 @@ class Command(BaseCommand):
                         if str(task) in job_list:
                             job_list.remove(str(task))
                         break
+                print("выход из while")
                 obj = Url.objects.get(job=task)
-
+                print (obj)
                 if job.result == -1:
                     obj.result = "URL unreachable"
+                    print ("1")
+                elif obj.result == "Something went wrong":
+                    obj.result = "Something went wrong"
+                    print("2")
                 else:
                     obj.result = job.result
+                    print ("3")
 
                 obj.status = True
                 obj.last_update = datetime.now(timezone.utc)
+                print ("pre-save")
                 obj.save()
                 if str(task) in job_list:
                     job_list.remove(str(task))
