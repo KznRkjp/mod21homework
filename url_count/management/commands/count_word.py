@@ -78,7 +78,7 @@ class Command(BaseCommand):
                         print (task)
                         if str(task) in job_list:
                             job_list.remove(str(task))
-                        continue
+                        break
                 obj = Url.objects.get(job=task)
 
                 if job.result == -1:
@@ -89,5 +89,4 @@ class Command(BaseCommand):
                 obj.status = True
                 obj.last_update = datetime.now(timezone.utc)
                 obj.save()
-                if task in job_list:
-                    job_list.remove(task)
+                job_list.remove(str(task))
