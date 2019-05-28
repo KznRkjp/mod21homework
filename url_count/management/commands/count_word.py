@@ -74,6 +74,8 @@ class Command(BaseCommand):
                         obj.status = True
                         obj.last_update = datetime.now(timezone.utc)
                         obj.save()
+                        print (job_list)
+                        print (task)
                         if task in job_list:
                             job_list.remove(task)
                         continue
