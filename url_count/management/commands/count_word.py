@@ -76,8 +76,8 @@ class Command(BaseCommand):
                         obj.save()
                         print (job_list)
                         print (task)
-                        if task in job_list:
-                            job_list.remove(task)
+                        if str(task) in job_list:
+                            job_list.remove(str(task))
                         continue
                 obj = Url.objects.get(job=task)
 
